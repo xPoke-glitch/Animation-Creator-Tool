@@ -12,8 +12,9 @@ public partial class AnimationCreator : EditorWindow
     private string _animationName;
     private float _frameTime;
 
+    SerializedObject serializedObject;
     SerializedProperty spritesSerialized;
-    SerializedObject spriteSerializedObject;
+    
 
     [MenuItem("Tools/Animation Creator")]
     public static void StartEditor()
@@ -24,8 +25,8 @@ public partial class AnimationCreator : EditorWindow
 
     private void OnEnable()
     {
-        spriteSerializedObject = new SerializedObject(this);
-        spritesSerialized = spriteSerializedObject.FindProperty("sprites");
+        serializedObject = new SerializedObject(this);
+        spritesSerialized = serializedObject.FindProperty("sprites");
     }
 
     void OnGUI()
@@ -38,21 +39,20 @@ public partial class AnimationCreator : EditorWindow
 
         EditorGUILayout.BeginHorizontal();
         GUILayout.Label("Animation Name:");
-        _animationName = EditorGUILayout.TextField(_animationName);
+        _animationName = EditorGUILayout.TextField(_animationName, GUILayout.ExpandWidth(false));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
         EditorGUILayout.BeginHorizontal();
         GUILayout.Label("Frames Time:");
-        _frameTime = EditorGUILayout.FloatField(_frameTime);
+        _frameTime = EditorGUILayout.FloatField(_frameTime, GUILayout.ExpandWidth(false));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
-        spriteSerializedObject.Update();
+        serializedObject.Update();
         EditorGUILayout.PropertyField(spritesSerialized, true);
-        spriteSerializedObject.ApplyModifiedProperties(); // Always at the end of OnGUI() methods
+        serializedObject.ApplyModifiedProperties(); // Always at the end of OnGUI() methods
 
-      
         if (GUILayout.Button("Create"))
         {
             if (string.IsNullOrEmpty(_animationName))
@@ -68,6 +68,11 @@ public partial class AnimationCreator : EditorWindow
                 spriteBinding.type = typeof(SpriteRenderer);
                 spriteBinding.path = "";
                 spriteBinding.propertyName = "m_Sprite"; // The name must be different from "Sprite"
+
+                if(_frameTime <= 0)
+                {
+                    _frameTime = 25;
+                }
 
                 ObjectReferenceKeyframe[] spriteKeyFrames = new ObjectReferenceKeyframe[sprites.Length];
                 for (int i = 0; i < (sprites.Length); i++)
