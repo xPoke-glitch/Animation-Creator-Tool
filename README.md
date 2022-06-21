@@ -3,6 +3,8 @@
 
 Unity tool for creating sprite animations
 
+<img src="https://github.com/xPoke-glitch/Animation-Creator-Tool/blob/main/Screenshots/screen.png" width="750">
+
 ## The Tool
 
 The tool create a sprite animation from an array of sprites.
@@ -15,5 +17,12 @@ How to use:
 
 The animation will be saved in Assets/Animations/<path>/<animation-name>.anim
 
+<img src="https://github.com/xPoke-glitch/Animation-Creator-Tool/blob/main/Screenshots/tool.gif" width="750">
+
+## Team
+
+**Developers**:
+* Cristian: https://github.com/xPoke-glitch / https://pokedev.itch.io/
+  
 ## Other
 You can check the complete Unity Custom Tool package here: https://github.com/xPoke-glitch/Custom-Tools-Pack. A fully ready-to-use updated package of my tools.
