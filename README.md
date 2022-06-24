@@ -10,12 +10,12 @@ Unity tool for creating sprite animations
 The tool create a sprite animation from an array of sprites.
 
 How to use:
-* Enter the name of the animation (or path/animation-name)
+* Enter the name of the animation (or **path**/**animation-name**)
 * Enter the frame seconds (ex: 5 is equal to 0:05 seconds)
 * Drop all the sprites of the animation in the sprites array
 * Press the create button
 
-The animation will be saved in Assets/Animations/<path>/<animation-name>.anim
+The animation will be saved in Assets/Animations/**path**/**animation-name**.anim
 
 <img src="https://github.com/xPoke-glitch/Animation-Creator-Tool/blob/main/Screenshots/tool.gif" width="750">
 
